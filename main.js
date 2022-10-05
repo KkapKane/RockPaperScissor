@@ -39,35 +39,48 @@ function playRound(playerSelection, computerSelection) {
      return 'player';
     }
 
-        else 
+    else if (computerSelection === playerSelection)
         {  
-        console.log ("Tie!");
-        playertie = true;
-        return(playertie)
+        return 'tie';
+       
+        
         }
 
 
 
 
-console.log (computerSelection)
-console.log(playerwin)
-return(playerwin)
+
 }
 
 
-let playerlose = 0;
+let compScore= 0;
 let playerscore = 0;
 const playerSelection = "Scissors";
 let computerSelection = getComputerChoice();
-console.log(playerSelection);
-let findWinner = (playRound(playerSelection, computerSelection));
-console.log(findWinner);
+
+
+
 
 function game(){
 for (let i = 1; i < 5; i++) {
+    let playerSelection = prompt("Rock, Paper, Scissors?");
     computerSelection = getComputerChoice();
-    console.log("round " + i + " " + (computerSelection)) + playRound(playerSelection, computerSelection);
+    console.log("round " + i)
+    console.log("Player Choice: " + playerSelection);
+    console.log("Computer Choice: " + computerSelection)
     
+    if (playRound(playerSelection, computerSelection)==='player'){
+    playerscore++;}
+    else if (playRound(playerSelection, computerSelection)==='bot'){
+        compScore++;
+    }
+    else if (playRound(playerSelection, computerSelection)==='tie'){
+        i--;
+    }
+    console.log("Bot score is " + compScore);
+    console.log("Player score is " + playerscore);
+    
+   
    
     
  }
