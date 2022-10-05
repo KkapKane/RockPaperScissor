@@ -1,5 +1,5 @@
 function getComputerChoice () {
-    const choices = ["Rock","Paper","Scissors"];
+    const choices = ["rock","paper","scissors"];
     let random = Math.floor(Math.random()*choices.length);
     return (random,choices[random]);
 }
@@ -7,34 +7,34 @@ let playertie = false;
 let playerwin = false;
 
 function playRound(playerSelection, computerSelection) {
-    if (computerSelection === "Rock" && playerSelection === "Scissors") {
-    console.log ("You Lose! Rock beats Scissors");
+    if (computerSelection === "rock" && playerSelection === "scissors") {
+    
      playerwin = false;
      return 'bot';
     }
-    else if (computerSelection === "Scissors" && playerSelection === "Paper") {
-    console.log ("You Lose! Scissors beats Paper");
+    else if (computerSelection === "scissors" && playerSelection === "paper") {
+    
      playerwin = false;
      return 'bot';
     }
-    else if (computerSelection === "Paper" && playerSelection === "Rock") {
-    console.log ("You Lose! Paper beats Rock");
+    else if (computerSelection === "paper" && playerSelection === "rock") {
+    
      playerwin = false;
      return 'bot';
     }
 
-    else if (computerSelection === "Paper" && playerSelection === "Scissors") {
-    console.log ("You Win! Scissors beats Paper");
+    else if (computerSelection === "paper" && playerSelection === "scissors") {
+    
      playerwin = true;
      return 'player';
     }
-    else if (computerSelection === "Rock" && playerSelection === "Paper") {
-    console.log ("You Win! Paper beats Rock");
+    else if (computerSelection === "rock" && playerSelection === "paper") {
+    
      playerwin = true;
      return 'player';
     }
-    else if (computerSelection === "Scissors" && playerSelection === "Rock") {
-    console.log ("You Win! Rock beats Scissors");
+    else if (computerSelection === "scissors" && playerSelection === "rock") {
+    
      playerwin = true;
      return 'player';
     }
@@ -62,28 +62,40 @@ let computerSelection = getComputerChoice();
 
 
 function game(){
-for (let i = 1; i < 5; i++) {
+for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("Rock, Paper, Scissors?");
     computerSelection = getComputerChoice();
     console.log("round " + i)
-    console.log("Player Choice: " + playerSelection);
-    console.log("Computer Choice: " + computerSelection)
+    
+   
     
     if (playRound(playerSelection, computerSelection)==='player'){
-    playerscore++;}
+    playerscore++;
+    console.log ("You Win! " + playerSelection + " beats " + computerSelection);}
     else if (playRound(playerSelection, computerSelection)==='bot'){
         compScore++;
+        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+    }
+    else if (playerSelection === "quit"){
+        break
     }
     else if (playRound(playerSelection, computerSelection)==='tie'){
         i--;
+        console.log("Tie!");
     }
-    console.log("Bot score is " + compScore);
-    console.log("Player score is " + playerscore);
+    console.log("Bot score:" + compScore + " " + "Player score:" + playerscore);
+    
     
    
    
     
  }
+ if (playerscore > compScore) {
+    console.log("Player Win!")
+    }
+    else if (compScore > playerscore){
+        console.log('Bot win!')
+    }
 }
 
 game()
