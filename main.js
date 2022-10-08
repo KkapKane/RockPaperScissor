@@ -80,7 +80,7 @@ function game(){
         //break
     //}
     else if (playRound(playerSelection, computerSelection)==='tie'){
-        i--;
+        //i--;
         console.log("Tie!");
     }
     console.log("Bot score:" + compScore + " " + "Player score:" + playerscore);
@@ -104,8 +104,8 @@ const rockbtn = document.getElementById('rock');
 rockbtn.addEventListener('click', setrock => {
     playerSelection = 'rock';
     playRound(playerSelection,computerSelection);
+    game();
     
-    console.log(playerSelection);
 });
 
 //---------------Paper Button---------------//
@@ -114,18 +114,18 @@ const paperbtn = document.getElementById('paper');
 paperbtn.addEventListener('click', setpaper => {
     playerSelection = 'paper';
     playRound(playerSelection,computerSelection);
+    game();
     
-    console.log(playerSelection);
 });
 
-//---------------Paper Button---------------//
+//---------------Scissor Button---------------//
 
 const scissorsbtn = document.getElementById('scissors');
 scissorsbtn.addEventListener('click', setscissors => {
     playerSelection = 'scissors';
     playRound(playerSelection,computerSelection);
+    game();
     
-    console.log(playerSelection);
 });
 
 //game()

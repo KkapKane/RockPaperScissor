@@ -1,0 +1,26 @@
+.scoreboard {
+    font-size: 30px;
+    gap: 20px;
+    display:flex;
+
+    justify-content: space-around;
+    margin: 50px;
+    
+}
+.Computerscore{
+    padding-right: 100px;
+}
+#container {
+    font-family: monospace;
+    font-size: 100px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    gap: 20px;
+    font-size: 40px;
+    border-radius: 8px;;
+}
