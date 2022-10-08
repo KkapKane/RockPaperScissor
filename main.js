@@ -202,10 +202,7 @@ function updatecompscore() {
 
 function restartgame(){
     if (playerscore >= 5){
-        playerscore = 0;
-        compScore = 0;
-        updateplayerscore();
-        updatecompscore();
+        
         document.getElementById('rock').disabled = true;
         document.getElementById('paper').disabled = true;
         document.getElementById('scissors').disabled = true;
@@ -213,10 +210,7 @@ function restartgame(){
         
     }
     else if (compScore >= 5){
-        playerscore = 0;
-        compScore = 0;
-        updateplayerscore();
-        updatecompscore();
+        
         document.getElementById('rock').disabled = true;
         document.getElementById('paper').disabled = true;
         document.getElementById('scissors').disabled = true;
@@ -224,3 +218,4 @@ function restartgame(){
     }  
     
 }
+
