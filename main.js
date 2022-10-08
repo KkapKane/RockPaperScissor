@@ -71,10 +71,15 @@ function game(){
     
     if (playRound(playerSelection, computerSelection)==='player'){
     playerscore++;
-    console.log ("You Win! " + playerSelection + " beats " + computerSelection);}
+    console.log ("You Win! " + playerSelection + " beats " + computerSelection);
+    updateplayerscore()
+    
+    }
+    
     else if (playRound(playerSelection, computerSelection)==='bot'){
         compScore++;
         console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        updatecompscore()
     }
     //else if (playerSelection === "quit"){
         //break
@@ -97,6 +102,23 @@ function game(){
         console.log('Bot win!')
     }
 }
+// Creating playerscore div
+
+const scorediv = document.querySelector('#scoreboard');
+const playerdiv = document.createElement('div');
+playerdiv.classList.add('playerscore')
+playerdiv.textContent = 'Player Score: 0'
+scorediv.appendChild(playerdiv);
+
+// Creating computerscore div
+
+
+const computerdiv = document.createElement('div');
+computerdiv.classList.add('Computerscore')
+computerdiv.textContent = 'Computer Score: 0'
+scorediv.appendChild(computerdiv);
+
+
 
 //---------------Rock Button---------------//
 
@@ -128,4 +150,21 @@ scissorsbtn.addEventListener('click', setscissors => {
     
 });
 
-//game()
+
+// Make a div and update it with the player's current score
+
+function updateplayerscore() {
+    playerdiv.innerHTML = 'Player Score: ' + playerscore;
+    //playerdiv.textContent = 'playerscore: ' + playerscore;
+    //scorediv.appendChild(playerdiv);
+}
+
+//Make a div and update it with the Computer's current score
+
+function updatecompscore() {
+    
+    computerdiv.innerHTML = 'Computer Score: ' + compScore;
+    //computerdiv.textContent = 'Computer Score: ' + compScore;
+    //scorediv.appendChild(computerdiv);
+}
+
