@@ -30,3 +30,10 @@ button {
     margin: 20px;;
     font-size: 30px;
 }
+
+.result {
+    width: 500px;
+    max-width: 500px;
+    inline-size: 400px;
+    
+}

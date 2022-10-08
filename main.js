@@ -5,7 +5,7 @@ function getComputerChoice () {
 }
 let playertie = false;
 let playerwin = false;
-
+// function to compare scores
 function playRound(playerSelection, computerSelection) {
     if (computerSelection === "rock" && playerSelection === "scissors") {
     
@@ -51,7 +51,17 @@ function playRound(playerSelection, computerSelection) {
 
 
 }
-
+//function to see if key is pressed. restart score if so
+document.addEventListener('keydown', (event) => {
+        playerscore = 0;
+        compScore = 0;
+        updateplayerscore();
+        updatecompscore();
+        document.getElementById('rock').disabled = false;
+        document.getElementById('paper').disabled = false;
+        document.getElementById('scissors').disabled = false;
+        resultdiv.textContent = '';
+})
 
 let compScore= 0;
 let playerscore = 0;
@@ -63,7 +73,7 @@ let computerSelection = getComputerChoice();
 
 function game(){
 
-    
+      
     computerSelection = getComputerChoice();
     
     
@@ -72,7 +82,7 @@ function game(){
     if (playRound(playerSelection, computerSelection)==='player'){
     playerscore++;
     
-    resultdiv.innerHTML = 'Player win! ' + playerSelection + ' beats ' + computerSelection;
+    resultdiv.textContent = 'Player win!' + playerSelection + 'beats ' + computerSelection;
     updateplayerscore()
     
     }
@@ -81,23 +91,15 @@ function game(){
         compScore++;
         
         updatecompscore()
-        resultdiv.innerHTML = 'Computer win! ' + computerSelection + ' beats ' + playerSelection;
+        resultdiv.textContent = 'Computer win!' + computerSelection + 'beats ' + playerSelection;
     }
     
     else if (playRound(playerSelection, computerSelection)==='tie'){
         
-        resultdiv.innerHTML = 'DRAW';
+        resultdiv.textContent = 'DRAW';
         
     }
-    
-    if (playerscore >= 5 || compScore >=5){
-        playerscore = 0;
-        compScore = 0;
-        resultdiv.innerHTML = 'The winner is player!'
-        
-    }
-
-    
+    restartgame();
     
 
    
@@ -109,6 +111,7 @@ function game(){
 
 
 // Creating playerscore div
+
 const bodydiv = document.querySelector('body');
 const scorediv = document.querySelector('#scoreboard');
 const playerdiv = document.createElement('div');
@@ -118,13 +121,13 @@ scorediv.appendChild(playerdiv);
 
 // Creating computerscore div
 
-
 const computerdiv = document.createElement('div');
 computerdiv.classList.add('Computerscore')
 computerdiv.textContent = 'Computer Score: 0'
 scorediv.appendChild(computerdiv);
 
 // create result div
+
 const btnboxdiv = document.querySelector('.btnbox');
 const resultdiv = document.createElement('div');
 resultdiv.classList.add('result')
@@ -143,7 +146,7 @@ rockbtn.addEventListener('click', setrock => {
     
 });
 rockbtn.addEventListener('mouseover', hoveredrock => {
-    //bodydiv.style.cssText = "background-image: url(rock.gif)";
+   
 })
 
 
@@ -157,7 +160,7 @@ paperbtn.addEventListener('click', setpaper => {
     
 });
 paperbtn.addEventListener('mouseover', hoveredpaper => {
-    //bodydiv.style.cssText = "background-image: url(paper.gif)";
+
 })
 
 
@@ -171,25 +174,53 @@ scissorsbtn.addEventListener('click', setscissors => {
     
 });
 scissorsbtn.addEventListener('mouseover', hoveredgif => {
-    //bodydiv.style.cssText = "background-image: url(blue-cut.gif)";
+    
 })
 
 
 // Make a div and update it with the player's current score
 
 function updateplayerscore() {
-    playerdiv.innerHTML = 'Player Score: ' + playerscore;
-    //playerdiv.textContent = 'playerscore: ' + playerscore;
-    //scorediv.appendChild(playerdiv);
+    playerdiv.textContent = 'Player Score: ' + playerscore;
+    
 }
 
 //Make a div and update it with the Computer's current score
 
 function updatecompscore() {
     
-    computerdiv.innerHTML = 'Computer Score: ' + compScore;
-    //computerdiv.textContent = 'Computer Score: ' + compScore;
-    //scorediv.appendChild(computerdiv);
+    computerdiv.textContent = 'Computer Score: ' + compScore;
+    
 }
 
 
+
+
+
+
+//disable buttons when either player reaches 5 or more pts
+
+function restartgame(){
+    if (playerscore >= 5){
+        playerscore = 0;
+        compScore = 0;
+        updateplayerscore();
+        updatecompscore();
+        document.getElementById('rock').disabled = true;
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
+        resultdiv.textContent = 'The winner is player!\nPress any key to restart';
+        
+    }
+    else if (compScore >= 5){
+        playerscore = 0;
+        compScore = 0;
+        updateplayerscore();
+        updatecompscore();
+        document.getElementById('rock').disabled = true;
+        document.getElementById('paper').disabled = true;
+        document.getElementById('scissors').disabled = true;
+        resultdiv.textContent = 'The winner is computer!\nPress any key to restart';
+    }  
+    
+}
