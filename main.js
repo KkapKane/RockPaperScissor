@@ -55,17 +55,17 @@ function playRound(playerSelection, computerSelection) {
 
 let compScore= 0;
 let playerscore = 0;
-const playerSelection = "Scissors";
+
 let computerSelection = getComputerChoice();
 
 
 
 
 function game(){
-for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Rock, Paper, Scissors?");
+//for (let i = 0; i < 5; i++) {
+    //let playerSelection = prompt("Rock, Paper, Scissors?");
     computerSelection = getComputerChoice();
-    console.log("round " + i)
+    //console.log("round " + i)
     
    
     
@@ -76,9 +76,9 @@ for (let i = 0; i < 5; i++) {
         compScore++;
         console.log("You Lose! " + computerSelection + " beats " + playerSelection);
     }
-    else if (playerSelection === "quit"){
-        break
-    }
+    //else if (playerSelection === "quit"){
+        //break
+    //}
     else if (playRound(playerSelection, computerSelection)==='tie'){
         i--;
         console.log("Tie!");
@@ -89,7 +89,7 @@ for (let i = 0; i < 5; i++) {
    
    
     
- }
+ //}
  if (playerscore > compScore) {
     console.log("Player Win!")
     }
@@ -98,4 +98,34 @@ for (let i = 0; i < 5; i++) {
     }
 }
 
-game()
+//---------------Rock Button---------------//
+
+const rockbtn = document.getElementById('rock');
+rockbtn.addEventListener('click', setrock => {
+    playerSelection = 'rock';
+    playRound(playerSelection,computerSelection);
+    
+    console.log(playerSelection);
+});
+
+//---------------Paper Button---------------//
+
+const paperbtn = document.getElementById('paper');
+paperbtn.addEventListener('click', setpaper => {
+    playerSelection = 'paper';
+    playRound(playerSelection,computerSelection);
+    
+    console.log(playerSelection);
+});
+
+//---------------Paper Button---------------//
+
+const scissorsbtn = document.getElementById('scissors');
+scissorsbtn.addEventListener('click', setscissors => {
+    playerSelection = 'scissors';
+    playRound(playerSelection,computerSelection);
+    
+    console.log(playerSelection);
+});
+
+//game()
