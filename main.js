@@ -62,48 +62,54 @@ let computerSelection = getComputerChoice();
 
 
 function game(){
-//for (let i = 0; i < 5; i++) {
-    //let playerSelection = prompt("Rock, Paper, Scissors?");
+
+    
     computerSelection = getComputerChoice();
-    //console.log("round " + i)
+    
     
    
     
     if (playRound(playerSelection, computerSelection)==='player'){
     playerscore++;
-    console.log ("You Win! " + playerSelection + " beats " + computerSelection);
+    
+    resultdiv.innerHTML = 'Player win! ' + playerSelection + ' beats ' + computerSelection;
     updateplayerscore()
     
     }
     
     else if (playRound(playerSelection, computerSelection)==='bot'){
         compScore++;
-        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        
         updatecompscore()
+        resultdiv.innerHTML = 'Computer win! ' + computerSelection + ' beats ' + playerSelection;
     }
-    //else if (playerSelection === "quit"){
-        //break
-    //}
+    
     else if (playRound(playerSelection, computerSelection)==='tie'){
-        //i--;
-        console.log("Tie!");
+        
+        resultdiv.innerHTML = 'DRAW';
+        
     }
-    console.log("Bot score:" + compScore + " " + "Player score:" + playerscore);
     
-    
-   
-   
-    
- //}
- if (playerscore > compScore) {
-    console.log("Player Win!")
+    if (playerscore >= 5 || compScore >=5){
+        playerscore = 0;
+        compScore = 0;
+        resultdiv.innerHTML = 'The winner is player!'
+        
     }
-    else if (compScore > playerscore){
-        console.log('Bot win!')
-    }
-}
-// Creating playerscore div
 
+    
+    
+
+   
+   
+    
+}
+
+
+
+
+// Creating playerscore div
+const bodydiv = document.querySelector('body');
 const scorediv = document.querySelector('#scoreboard');
 const playerdiv = document.createElement('div');
 playerdiv.classList.add('playerscore')
@@ -118,6 +124,13 @@ computerdiv.classList.add('Computerscore')
 computerdiv.textContent = 'Computer Score: 0'
 scorediv.appendChild(computerdiv);
 
+// create result div
+const btnboxdiv = document.querySelector('.btnbox');
+const resultdiv = document.createElement('div');
+resultdiv.classList.add('result')
+resultdiv.textContent = ''
+btnboxdiv.appendChild(resultdiv);
+
 
 
 //---------------Rock Button---------------//
@@ -129,6 +142,10 @@ rockbtn.addEventListener('click', setrock => {
     game();
     
 });
+rockbtn.addEventListener('mouseover', hoveredrock => {
+    //bodydiv.style.cssText = "background-image: url(rock.gif)";
+})
+
 
 //---------------Paper Button---------------//
 
@@ -139,6 +156,10 @@ paperbtn.addEventListener('click', setpaper => {
     game();
     
 });
+paperbtn.addEventListener('mouseover', hoveredpaper => {
+    //bodydiv.style.cssText = "background-image: url(paper.gif)";
+})
+
 
 //---------------Scissor Button---------------//
 
@@ -149,6 +170,9 @@ scissorsbtn.addEventListener('click', setscissors => {
     game();
     
 });
+scissorsbtn.addEventListener('mouseover', hoveredgif => {
+    //bodydiv.style.cssText = "background-image: url(blue-cut.gif)";
+})
 
 
 // Make a div and update it with the player's current score
@@ -167,4 +191,5 @@ function updatecompscore() {
     //computerdiv.textContent = 'Computer Score: ' + compScore;
     //scorediv.appendChild(computerdiv);
 }
+
 

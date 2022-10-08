@@ -24,3 +24,9 @@ button {
     font-size: 40px;
     border-radius: 8px;;
 }
+
+.result {
+    text-align: center;
+    margin: 20px;;
+    font-size: 30px;
+}
